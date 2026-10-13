@@ -59,7 +59,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Criar Conta (Cadastro)"
-        style="?android:attr/buttonStyleBorderless"
-        android:textColor="#3498DB"/>
+        android:textColor="#3498DB" />
 
 </LinearLayout>
