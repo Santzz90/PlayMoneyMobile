@@ -43,7 +43,12 @@ public class LoginActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     if (user != null && user.getPassword().equals(password)) {
                         Toast.makeText(this, "Login bem-sucedido! Bem-vindo, " + user.getName(), Toast.LENGTH_LONG).show();
-                        // Aqui abrirá o Dashboard principal futuramente
+
+                        // Transição automática para o Dashboard
+                        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                        startActivity(intent);
+                        finish(); // Fecha a tela de login para o utilizador não voltar a ela
+
                     } else {
                         Toast.makeText(this, "E-mail ou senha inválidos!", Toast.LENGTH_SHORT).show();
                     }
