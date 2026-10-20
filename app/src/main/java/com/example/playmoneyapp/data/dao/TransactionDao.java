@@ -19,6 +19,7 @@ public interface TransactionDao {
     @Query("SELECT SUM(amount) FROM transactions WHERE type = 'DESPESA'")
     LiveData<Double> getTotalExpense();
 
-    @Query("SELECT * FROM transactions")
-    List<TransactionEntity> getAllTransactions();
+
+    @Query("SELECT * FROM transactions ORDER BY id DESC")
+    LiveData<List<TransactionEntity>> getAllTransactions();
 }
