@@ -8,12 +8,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.playmoneyapp.data.entity.TransactionEntity;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder> {
 
     private List<TransactionEntity> transactions = new ArrayList<>();
+    private final NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(TransactionEntity transaction);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public void setTransactions(List<TransactionEntity> transactions) {
         this.transactions = transactions;
@@ -33,13 +46,21 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         holder.tvDescription.setText(transaction.getDescription());
         holder.tvType.setText(transaction.getType());
 
+        String valorFormatado = formatoMoeda.format(transaction.getAmount());
+
         if ("RECEITA".equals(transaction.getType())) {
-            holder.tvAmount.setText(String.format("R$ %.2f", transaction.getAmount()));
+            holder.tvAmount.setText(valorFormatado);
             holder.tvAmount.setTextColor(Color.parseColor("#2ECC71")); // Verde
         } else {
-            holder.tvAmount.setText(String.format("- R$ %.2f", transaction.getAmount()));
+            holder.tvAmount.setText("- " + valorFormatado);
             holder.tvAmount.setTextColor(Color.parseColor("#E74C3C")); // Vermelho
         }
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(transaction);
+            }
+        });
     }
 
     @Override

@@ -2,49 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#131824"
     android:orientation="vertical"
-    android:padding="24dp"
     android:gravity="center"
-    android:background="#F5F6FA">
+    android:padding="24dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Criar Conta - PlayMoney"
+        android:textColor="#3B82F6"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#2ECC71"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="32dp"/>
 
     <EditText
-        android:id="@+id/etRegName"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nome Completo"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#9CA3AF"
+        android:backgroundTint="#3B82F6"
         android:inputType="textPersonName"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"/>
 
     <EditText
-        android:id="@+id/etRegEmail"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="E-mail"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#9CA3AF"
+        android:backgroundTint="#3B82F6"
         android:inputType="textEmailAddress"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"/>
 
     <EditText
-        android:id="@+id/etRegPassword"
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Senha"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#9CA3AF"
+        android:backgroundTint="#3B82F6"
         android:inputType="textPassword"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="24dp"
+        android:padding="12dp"/>
 
     <Button
         android:id="@+id/btnRegister"
@@ -53,7 +59,6 @@
         android:text="Registar"
         android:backgroundTint="#2ECC71"
         android:textColor="#FFFFFF"
-        android:padding="12dp"
         android:layout_marginBottom="12dp"/>
 
     <Button
@@ -61,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Já tenho conta (Voltar)"
-        android:textColor="#3498DB" />
+        android:backgroundTint="#1F2937"
+        android:textColor="#FFFFFF"/>
 
 </LinearLayout>

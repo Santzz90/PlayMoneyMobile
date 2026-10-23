@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Fundo escuro do menu -->
+    <color name="menu_background">#131824</color>
+    <!-- Texto principal e logo "Play" -->
+    <color name="menu_text_white">#FFFFFF</color>
+    <!-- Cor da palavra "Money" e detalhes -->
+    <color name="menu_text_blue">#3B82F6</color>
+    <!-- Subtítulo e texto secundário -->
+    <color name="menu_text_muted">#9CA3AF</color>
 </resources>

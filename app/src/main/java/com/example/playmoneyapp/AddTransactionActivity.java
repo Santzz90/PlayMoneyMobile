@@ -16,6 +16,9 @@ public class AddTransactionActivity extends AppCompatActivity {
     private RadioButton rbIncome;
     private Button btnSaveTransaction;
 
+    private long transactionId = -1;
+    private boolean isEditMode = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,21 @@ public class AddTransactionActivity extends AppCompatActivity {
         etAmount = findViewById(R.id.etAmount);
         rbIncome = findViewById(R.id.rbIncome);
         btnSaveTransaction = findViewById(R.id.btnSaveTransaction);
+
+        // Verifica se recebeu dados para edição
+        if (getIntent().hasExtra("TRANSACTION_ID")) {
+            transactionId = getIntent().getLongExtra("TRANSACTION_ID", -1);
+            String desc = getIntent().getStringExtra("TRANSACTION_DESC");
+            double amount = getIntent().getDoubleExtra("TRANSACTION_AMOUNT", 0.0);
+            String type = getIntent().getStringExtra("TRANSACTION_TYPE");
+
+            etDescription.setText(desc);
+            etAmount.setText(String.valueOf(amount));
+            rbIncome.setChecked("RECEITA".equals(type));
+
+            isEditMode = true;
+            btnSaveTransaction.setText("Atualizar Transação");
+        }
 
         btnSaveTransaction.setOnClickListener(v -> {
             String description = etDescription.getText().toString().trim();
@@ -45,10 +63,9 @@ public class AddTransactionActivity extends AppCompatActivity {
 
             String type = rbIncome.isChecked() ? "RECEITA" : "DESPESA";
 
-            // Criar a entidade com os dados da transação
             TransactionEntity transaction = new TransactionEntity(
-                    1L, // userId padrão
-                    1L, // categoryId padrão
+                    1L,
+                    1L,
                     amount,
                     description,
                     type,
@@ -57,13 +74,21 @@ public class AddTransactionActivity extends AppCompatActivity {
                     true
             );
 
-            // Gravar na base de dados Room usando thread em segundo plano
+            if (isEditMode) {
+                transaction.setId(transactionId);
+            }
+
             Executors.newSingleThreadExecutor().execute(() -> {
-                AppDatabase.getDatabase(getApplicationContext()).transactionDao().insertTransaction(transaction);
+                if (isEditMode) {
+                    AppDatabase.getDatabase(getApplicationContext()).transactionDao().update(transaction);
+                } else {
+                    AppDatabase.getDatabase(getApplicationContext()).transactionDao().insert(transaction);
+                }
 
                 runOnUiThread(() -> {
-                    Toast.makeText(this, "Transação guardada com sucesso!", Toast.LENGTH_SHORT).show();
-                    finish(); // Fecha a tela e retorna ao Dashboard
+                    String msg = isEditMode ? "Transação atualizada com sucesso!" : "Transação guardada com sucesso!";
+                    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                    finish();
                 });
             });
         });

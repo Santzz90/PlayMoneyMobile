@@ -2,63 +2,86 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#131824"
     android:orientation="vertical"
-    android:padding="24dp"
     android:gravity="center"
-    android:background="#F5F6FA">
+    android:padding="24dp">
 
-    <TextView
+    <!-- Logo: Play (Branco) + Money (Azul) -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PlayMoney"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="#2ECC71"
-        android:layout_marginBottom="8dp"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Money"
+            android:textColor="#3B82F6"
+            android:textSize="28sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Controle e Educação Financeira"
+        android:textColor="#9CA3AF"
         android:textSize="14sp"
-        android:textColor="#7F8C8D"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="40dp"/>
 
+    <!-- Campo de E-mail -->
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="E-mail"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#9CA3AF"
+        android:backgroundTint="#3B82F6"
         android:inputType="textEmailAddress"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"/>
 
+    <!-- Campo de Senha -->
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Senha"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#9CA3AF"
+        android:backgroundTint="#3B82F6"
         android:inputType="textPassword"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="24dp"
+        android:padding="12dp"/>
 
+    <!-- Botão Entrar -->
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Entrar"
-        android:backgroundTint="#2ECC71"
+        android:backgroundTint="#3B82F6"
         android:textColor="#FFFFFF"
-        android:padding="12dp"
         android:layout_marginBottom="12dp"/>
 
+    <!-- Botão Ir para Registo -->
     <Button
         android:id="@+id/btnGoToRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Criar Conta (Cadastro)"
-        android:textColor="#3498DB" />
+        android:text="Criar Conta (Cadastre-se)"
+        android:backgroundTint="#1F2937"
+        android:textColor="#FFFFFF"/>
 
 </LinearLayout>

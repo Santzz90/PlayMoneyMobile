@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/menu_background"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Logo: Play (Branco) + Money (Azul) -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:textColor="@color/menu_text_white"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Money"
+            android:textColor="@color/menu_text_blue"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- Perfil / Identificação -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teste front"
+        android:textColor="@color/menu_text_white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PM000002 - USER"
+        android:textColor="@color/menu_text_muted"
+        android:textSize="12sp"
+        android:layout_marginBottom="36dp"/>
+
+    <!-- Itens do Menu -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dashboard"
+        android:textColor="@color/menu_text_white"
+        android:textSize="16sp"
+        android:paddingVertical="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Movimentações"
+        android:textColor="@color/menu_text_white"
+        android:textSize="16sp"
+        android:paddingVertical="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Categorias"
+        android:textColor="@color/menu_text_white"
+        android:textSize="16sp"
+        android:paddingVertical="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pendentes"
+        android:textColor="@color/menu_text_white"
+        android:textSize="16sp"
+        android:paddingVertical="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Relatórios"
+        android:textColor="@color/menu_text_white"
+        android:textSize="16sp"
+        android:paddingVertical="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desafios"
+        android:textColor="@color/menu_text_white"
+        android:textSize="16sp"
+        android:paddingVertical="12dp"/>
+
+</LinearLayout>
