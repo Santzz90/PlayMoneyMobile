@@ -8,6 +8,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.playmoneyapp.data.AppDatabase;
 import com.example.playmoneyapp.data.entity.UserEntity;
+
+import java.util.Random;
 import java.util.concurrent.Executors;
 
 public class LoginActivity extends AppCompatActivity {
@@ -63,3 +65,5 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 }
+
+

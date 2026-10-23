@@ -10,12 +10,12 @@ public class UserEntity {
     private long id;
 
     @NonNull
-    private String userCode; // Padrão PM + 6 dígitos (RF01)[cite: 10, 31]
+    private String userCode;
     private String name;
     private String email;
-    private String password; // Protegida (RF01/RF02)[cite: 10, 11]
-    private String profile;  // USER, ADMIN ou MASTER (RF03)[cite: 12, 28]
-    private boolean isActive; // Para inativação sem exclusão (RF03)[cite: 12]
+    private String password;
+    private String profile;
+    private boolean isActive;
 
     public UserEntity(@NonNull String userCode, String name, String email, String password, String profile) {
         this.userCode = userCode;

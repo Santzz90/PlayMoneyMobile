@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText etRegName, etRegEmail, etRegPassword;
+    private EditText etName, etEmail, etPassword;
     private Button btnRegister, btnBackToLogin;
 
     @Override
@@ -20,49 +20,40 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        etRegName = findViewById(R.id.etRegName);
-        etRegEmail = findViewById(R.id.etRegEmail);
-        etRegPassword = findViewById(R.id.etRegPassword);
+        etName = findViewById(R.id.etName);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
         btnRegister = findViewById(R.id.btnRegister);
         btnBackToLogin = findViewById(R.id.btnBackToLogin);
 
         btnRegister.setOnClickListener(v -> {
-            String name = etRegName.getText().toString().trim();
-            String email = etRegEmail.getText().toString().trim();
-            String password = etRegPassword.getText().toString().trim();
+            String name = etName.getText().toString().trim();
+            String email = etEmail.getText().toString().trim();
+            String password = etPassword.getText().toString().trim();
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Por favor, preencha todos os campos!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Gera o código único no padrão exigido pelo projeto: PM + 6 dígitos (RF01)
-            String userCode = "PM" + String.format("%06d", new Random().nextInt(999999));
-
-            // Perfil padrão inicial definido como USER (RF03)
+            int randomNum = 100000 + new Random().nextInt(900000);
+            String userCode = "PM" + randomNum;
             String profile = "USER";
 
+            UserEntity newUser = new UserEntity(userCode, name, email, password, profile);
+
             Executors.newSingleThreadExecutor().execute(() -> {
-                AppDatabase db = AppDatabase.getDatabase(getApplicationContext());
-
-                // Verifica se o e-mail já existe
-                UserEntity existingUser = db.userDao().findByEmail(email);
-                if (existingUser != null) {
-                    runOnUiThread(() -> Toast.makeText(this, "Este e-mail já está cadastrado!", Toast.LENGTH_SHORT).show());
-                    return;
-                }
-
-                // Cria e insere o novo utilizador no banco de dados local SQLite
-                UserEntity newUser = new UserEntity(userCode, name, email, password, profile);
-                db.userDao().insertUser(newUser);
+                AppDatabase.getDatabase(getApplicationContext()).userDao().insertUser(newUser);
 
                 runOnUiThread(() -> {
-                    Toast.makeText(this, "Conta criada com sucesso! Código: " + userCode, Toast.LENGTH_LONG).show();
-                    finish(); // Fecha a tela de cadastro e retorna ao login
+                    Toast.makeText(RegisterActivity.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
+                    finish();
                 });
             });
         });
 
-        btnBackToLogin.setOnClickListener(v -> finish());
+        btnBackToLogin.setOnClickListener(v -> {
+            finish();
+        });
     }
 }
