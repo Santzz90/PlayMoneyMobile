@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Tela de Cadastro de Usuário (RF01) -->
+        <!-- CORRIGIDO: Tela de Cadastro de Usuário como classe independente -->
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
@@ -36,6 +36,7 @@
         <activity
             android:name=".DashboardActivity"
             android:exported="false" />
+
         <activity
             android:name=".AddTransactionActivity"
             android:exported="false" />

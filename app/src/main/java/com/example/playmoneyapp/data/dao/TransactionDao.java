@@ -21,6 +21,7 @@ public interface TransactionDao {
     @Delete
     void delete(TransactionEntity transaction);
 
+    // Métodos globais (compatíveis com o Dashboard atual)
     @Query("SELECT * FROM transactions ORDER BY id DESC")
     LiveData<List<TransactionEntity>> getAllTransactions();
 
@@ -29,4 +30,14 @@ public interface TransactionDao {
 
     @Query("SELECT SUM(amount) FROM transactions WHERE type = 'DESPESA'")
     LiveData<Double> getTotalExpense();
+
+    // Métodos específicos por utilizador (para relatórios ou evolução futura)
+    @Query("SELECT * FROM transactions WHERE userId = :userId ORDER BY id DESC")
+    LiveData<List<TransactionEntity>> getAllTransactionsByUser(long userId);
+
+    @Query("SELECT SUM(amount) FROM transactions WHERE userId = :userId AND type = 'RECEITA'")
+    LiveData<Double> getTotalIncomeByUser(long userId);
+
+    @Query("SELECT SUM(amount) FROM transactions WHERE userId = :userId AND type = 'DESPESA'")
+    LiveData<Double> getTotalExpenseByUser(long userId);
 }

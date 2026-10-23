@@ -14,7 +14,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
     private EditText etDescription, etAmount;
     private RadioButton rbIncome;
-    private Button btnSaveTransaction;
+    private Button btnSaveTransaction, btnCancel; // Adicionada a referência ao botão cancelar
 
     private long transactionId = -1;
     private boolean isEditMode = false;
@@ -28,6 +28,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         etAmount = findViewById(R.id.etAmount);
         rbIncome = findViewById(R.id.rbIncome);
         btnSaveTransaction = findViewById(R.id.btnSaveTransaction);
+        btnCancel = findViewById(R.id.btnCancel); // Certifique-se de adicionar este ID no XML
 
         // Verifica se recebeu dados para edição
         if (getIntent().hasExtra("TRANSACTION_ID")) {
@@ -44,6 +45,7 @@ public class AddTransactionActivity extends AppCompatActivity {
             btnSaveTransaction.setText("Atualizar Transação");
         }
 
+        // Ação do botão principal (Salvar ou Atualizar)
         btnSaveTransaction.setOnClickListener(v -> {
             String description = etDescription.getText().toString().trim();
             String amountStr = etAmount.getText().toString().trim();
@@ -92,5 +94,12 @@ public class AddTransactionActivity extends AppCompatActivity {
                 });
             });
         });
+
+        // Ação do botão Cancelar / Voltar sem alterar nada
+        if (btnCancel != null) {
+            btnCancel.setOnClickListener(v -> {
+                finish(); // Fecha a activity atual e retorna ao menu/dashboard em segurança
+            });
+        }
     }
 }
