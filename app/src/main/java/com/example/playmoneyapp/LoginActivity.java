@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         // Transição automática para o Dashboard
                         Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                        intent.putExtra("USER_ID", user.getId());
                         startActivity(intent);
                         finish(); // Fecha a tela de login para o utilizador não voltar a ela
 

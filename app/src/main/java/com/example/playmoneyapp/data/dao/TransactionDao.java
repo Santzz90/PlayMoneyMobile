@@ -40,4 +40,10 @@ public interface TransactionDao {
 
     @Query("SELECT SUM(amount) FROM transactions WHERE userId = :userId AND type = 'DESPESA'")
     LiveData<Double> getTotalExpenseByUser(long userId);
+
+    @Query("SELECT * FROM transactions WHERE id = :transactionId AND userId = :userId LIMIT 1")
+    TransactionEntity getTransactionByIdAndUser(long transactionId, long userId);
+
+    @Query("DELETE FROM transactions WHERE id = :transactionId AND userId = :userId")
+    int deleteTransactionByIdAndUser(long transactionId, long userId);
 }

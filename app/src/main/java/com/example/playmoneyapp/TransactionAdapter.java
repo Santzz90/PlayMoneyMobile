@@ -56,10 +56,12 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             holder.tvAmount.setTextColor(Color.parseColor("#E74C3C")); // Vermelho
         }
 
-        holder.itemView.setOnClickListener(v -> {
+        holder.itemView.setOnLongClickListener(v -> {
             if (listener != null) {
                 listener.onItemClick(transaction);
+                return true;
             }
+            return false;
         });
     }
 
